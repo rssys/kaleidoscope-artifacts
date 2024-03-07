@@ -1,0 +1,3 @@
+[submodule "llvm12"]
+	path = llvm12
+	url = git@github.com:taptipalit/llvm12.git
