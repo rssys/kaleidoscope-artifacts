@@ -81,7 +81,6 @@ def plot_figs(dfs):
             if app_index >= len(apps):
                 break
             app = apps[app_index]
-            print (app)
             if app not in dfs:
                 app_index = app_index + 1
                 continue
@@ -101,8 +100,6 @@ def plot_figs(dfs):
             max_baseline = max(baseline)
             max_full = max(full)
 
-
-
             max_factor_impr = round(max_baseline/max_full, 2)
             max_factor_impr_arr.append(max_factor_impr)
 
@@ -110,13 +107,6 @@ def plot_figs(dfs):
                     avg_factor_impr]
             max_data_arr = [max_baseline, max_full, max_factor_impr]
  
-            """
-            data_arr = [avg_baseline, avg_ctx, avg_vgep, avg_pwc,
-                    avg_ctx_vgep, avg_ctx_pwc, avg_pwc_vgep, avg_full,
-                    avg_factor_impr, max_baseline, max_ctx, max_vgep, max_pwc,
-                    max_ctx_vgep, max_ctx_pwc, max_pwc_vgep,
-                    max_full, max_factor_impr]
-            """
             
             arr_map = {1: baseline, 2:full}
             # print(complete_data)
@@ -128,22 +118,9 @@ def plot_figs(dfs):
             elements.append(bp)
             # bp = axes[i][j].violinplot(complete_data)
 
-            """
-            outliers = bp["fliers"]
-            for outlier in outliers:
-                x_data = outlier.get_xdata()
-                y_data = outlier.get_ydata()
-                for (x,y) in zip(x_data, y_data):
-                    print ("x = " + str(x) + " y = " + str(y))
-                    if arr_map[x].count(y) > 50:
-                        print("Setting label")
-                        outlier.set_label(str(arr_map[x].count(y)))
-                        continue
-            """
                     
             # axes[i][j].set_xticklabels(complete_data.keys())
             app_name = apps_map[apps[app_index]]
-            print(app_name)
 
             app_avg_data_map[app_name] = avg_data_arr
             app_max_data_map[app_name] = max_data_arr
@@ -197,27 +174,39 @@ def plot_figs(dfs):
             bbox_to_anchor=(0.99,0.09), ncol=1)
     plt.subplots_adjust(right=0.85)
     fig.tight_layout()
-    plt.savefig('./box-pts.pdf')
+    plt.savefig('./box-ptd.pdf')
 
-    for i in range(len(apps)):
-        app = apps_map[apps[i]]
-        print(app, end=', ')
-        for ind, data in enumerate(app_avg_data_map[app]):
-            if ind == len(apps) - 1:
-                print(data, end = ' ')
-            else:
-                print(data, end = ', ')
-        print()
+    with open("avg-ptd.csv", 'w') as file:
+        print("Application,", "Baseline Average,", "Kaleidoscope Average,", 
+                "Factor Improvement,", file=file)
+        for i in range(len(apps)):
+            app = apps_map[apps[i]]
+            print(app, end=', ', file=file)
+            for ind, data in enumerate(app_avg_data_map[app]):
+                if ind == len(apps) - 1:
+                    print(data, end = ' ', file=file)
+                else:
+                    print(data, end = ', ', file=file)
+            print("", file=file)
+
+    with open("max-ptd.csv", 'w') as file:
+        print("Application,", "Baseline Max,", "Kaleidoscope Max,", 
+                "Factor Improvement,", file=file)
+        for i in range(len(apps)):
+            app = apps_map[apps[i]]
+            print(app, end=', ', file=file)
+            for ind, data in enumerate(app_max_data_map[app]):
+                if ind == len(apps) - 1:
+                    print(data, end = ' ', file=file)
+                else:
+                    print(data, end = ', ', file=file)
+            print("", file=file)
 
 
-    print(sum(avg_factor_impr_arr))
     print("Average average improvement " +
             str(round(sum(avg_factor_impr_arr)/len(avg_factor_impr_arr), 2)))
     print("Average max improvement " +
             str(round(sum(max_factor_impr_arr)/len(max_factor_impr_arr), 2)))
-
-
-
 
 
 #cfi_data = pd.read_csv('../data/cfi_avg.dat', names =  ['Application',
