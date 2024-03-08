@@ -4,3 +4,4 @@
 [submodule "kaleidoscope-pta"]
 	path = kaleidoscope-pta
 	url = git@github.com:taptipalit/kaleidoscope-pta.git
+	branch = asplos-submission-cut
