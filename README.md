@@ -36,7 +36,3 @@ The following files will be generated:
 2. `avg-cfi.pdf` corresponds to Figure 11 of the paper.
 3. `box-cfi.pdf` and `box-ptd.pdf` correspond to Figure 10 and 12 of the
 	 paper.
-
-## [Optional] Compile the applications to generate the bitcodes
-
-TODO.
