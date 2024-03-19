@@ -29,11 +29,10 @@ cd ../..
 
 echo "export PATH=\"$(realpath ./llvm12/debug-build/bin):\$PATH\"" >> ~/.bashrc
 echo "export LLVM_DIR=\"$(realpath ./llvm12/debug-build/bin)\"" >> ~/.bashrc
+LLVM_DIR=$(realpath ./llvm12/debug-build/bin)
 echo "export LLVM_HOME=$LLVM_DIR" >> ~/.bashrc
 source ~/.bashrc
 
 cd kaleidoscope-pta
 ./build.sh debug
 cd ../
-
-
