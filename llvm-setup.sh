@@ -4,7 +4,7 @@
 # compile the gold linker
 
 sudo apt-get -y install libgmp-dev libmpfr-dev
-git clone --depth 1 git://sourceware.org/git/binutils-gdb.git binutils
+#git clone --depth 1 git://sourceware.org/git/binutils-gdb.git binutils
 mkdir gold-build
 cd gold-build
 ../binutils/configure --enable-gold --enable-plugins --disable-werror
@@ -16,7 +16,7 @@ sudo mv /usr/bin/ld /usr/bin/ld-bkup
 sudo ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
 # Build the LLVM compiler
-git submodule update --init
+# git submodule update --init
 cd llvm12
 
 export BINUTILS_INC_DIR="$(realpath ./binutils/include)"
