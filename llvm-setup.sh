@@ -3,7 +3,11 @@
 
 # compile the gold linker
 
-sudo apt-get -y install libgmp-dev libmpfr-dev
+apt-get -y install libgmp-dev libmpfr-dev
+
+
+cd kaleidoscope-artifacts
+
 git clone --depth 1 git://sourceware.org/git/binutils-gdb.git binutils
 mkdir gold-build
 cd gold-build
@@ -12,14 +16,15 @@ make all-gold -j8
 
 cd ..
 # change the system-wide linker after backing it up
-sudo mv /usr/bin/ld /usr/bin/ld-bkup
-sudo ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
+apt reinstall binutils
+mv /usr/bin/ld /usr/bin/ld-bkup
+ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
 # Build the LLVM compiler
 git submodule update --init
 cd llvm12
 
-export BINUTILS_INC_DIR="$(realpath ./binutils/include)"
+export BINUTILS_INC_DIR="$(realpath ../binutils/include)"
 cmake -S llvm -B debug-build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug \
 -DLLVM_ENABLE_DUMP=ON  -DLLVM_ENABLE_PROJECTS="compiler-rt;clang;lld" \
 -DLLVM_BINUTILS_INCDIR=$BINUTILS_INC_DIR  -DCMAKE_INSTALL_PREFIX=/usr/
