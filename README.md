@@ -1,5 +1,16 @@
 # Kaleidoscope Artifacts
 
+## Setting up Docker container environment
+
+1. Run `docker build -t kaleidoscope:latest .` to build the container. This
+	 will build the LLVM compiler and kaleidoscope and also start running the
+experiments. 
+2. Run `docker run -it kaleidoscope:latest bash` to launch a bash shell in the
+	 container so that you can inspect the results.
+
+Alternatively, the scripts can also be executed directly on the host machine.
+
+## Host machine setup
 
 Please set up passwordless `sudo` on your machine.
 

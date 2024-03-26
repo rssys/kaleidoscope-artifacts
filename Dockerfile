@@ -19,4 +19,5 @@ WORKDIR /kaleidoscope-artifacts
 
 RUN ./run.sh
 
+
 CMD ["bash"]
