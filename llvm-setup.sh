@@ -5,6 +5,7 @@
 
 apt-get -y install libgmp-dev libmpfr-dev
 
+ssh-keygen -b 2048 -t rsa -f /tmp/sshkey -q -N ""
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
 
