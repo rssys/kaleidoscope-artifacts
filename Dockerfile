@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
 		libedit-dev swig libncurses5-dev python-dev-is-python3 cmake build-essential \
 		swig libncurses5-dev \
-		libgmp-dev libmpfr-dev git ssh vim
+		libgmp-dev libmpfr-dev git ssh vim texinfo flex bison
 # Set the default command for the container
 
 RUN apt-get install --reinstall -y ca-certificates

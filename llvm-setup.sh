@@ -5,6 +5,7 @@
 
 set -x
 apt-get -y install libgmp-dev libmpfr-dev
+apt reinstall binutils # Create a sane information
 
 yes | ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
@@ -18,7 +19,6 @@ make all-gold -j8
 
 cd ..
 # change the system-wide linker after backing it up
-apt reinstall binutils
 mv /usr/bin/ld /usr/bin/ld-bkup
 ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
