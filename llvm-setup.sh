@@ -32,7 +32,6 @@ cmake -S llvm -B debug-build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug \
 	-DLLVM_BINUTILS_INCDIR=$BINUTILS_INC_DIR  -DCMAKE_INSTALL_PREFIX=/usr/
 cd debug-build
 make -j8
-exit 0
 cd ../..
 
 echo "export PATH=\"$(realpath ./llvm12/debug-build/bin):\$PATH\"" >>

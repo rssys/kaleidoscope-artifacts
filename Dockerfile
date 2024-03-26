@@ -17,6 +17,6 @@ RUN apt-get install --reinstall -y ca-certificates
 RUN git clone https://github.com/rssys/kaleidoscope-artifacts.git
 WORKDIR /kaleidoscope-artifacts
 
-RUN ./llvm-setup.sh
+RUN ./run.sh
 
 CMD ["bash"]
