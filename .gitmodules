@@ -1,7 +1,7 @@
 [submodule "llvm12"]
-	path = llvm12
-	url = git@github.com:taptipalit/llvm12.git
+        path = llvm12
+        url = https://github.com/taptipalit/llvm12.git
 [submodule "kaleidoscope-pta"]
-	path = kaleidoscope-pta
-	url = git@github.com:taptipalit/kaleidoscope-pta.git
-	branch = asplos-submission-cut
+        path = kaleidoscope-pta
+        url = https://github.com/taptipalit/kaleidoscope-pta.git
+        branch = asplos-submission-cut
