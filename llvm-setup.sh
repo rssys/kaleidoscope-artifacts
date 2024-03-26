@@ -19,7 +19,7 @@ make all-gold -j8
 cd ..
 # change the system-wide linker after backing it up
 apt reinstall binutils
-cp /usr/bin/ld /usr/bin/ld-bkup
+mv /usr/bin/ld /usr/bin/ld-bkup
 ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
 # Build the LLVM compiler
