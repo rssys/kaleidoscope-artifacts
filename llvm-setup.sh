@@ -5,8 +5,8 @@
 
 apt-get -y install libgmp-dev libmpfr-dev
 
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-cd kaleidoscope-artifacts
 
 git clone --depth 1 git://sourceware.org/git/binutils-gdb.git binutils
 mkdir gold-build
@@ -17,7 +17,7 @@ make all-gold -j8
 cd ..
 # change the system-wide linker after backing it up
 apt reinstall binutils
-mv /usr/bin/ld /usr/bin/ld-bkup
+cp /usr/bin/ld /usr/bin/ld-bkup
 ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
 # Build the LLVM compiler
