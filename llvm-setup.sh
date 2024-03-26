@@ -24,6 +24,7 @@ ln -s "$(realpath ./gold-build/gold/ld-new)" /usr/bin/ld
 
 # Build the LLVM compiler
 git submodule update --init
+exit 0
 cd llvm12
 
 export BINUTILS_INC_DIR="$(realpath ../binutils/include)"
